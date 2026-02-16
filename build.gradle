@@ -1,10 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-  //./gradlew dependencies --write-locks
-  configurations.classpath {
-    resolutionStrategy.activateDependencyLocking()
-  }
   repositories {
     jcenter()
     maven {
@@ -33,4 +29,11 @@ allprojects {
 
 task clean(type: Delete) {
   delete rootProject.buildDir
+}
+
+//./gradlew :app:dependencies --write-locks
+subprojects {
+  configurations.all {
+    resolutionStrategy.activateDependencyLocking()
+  }
 }
